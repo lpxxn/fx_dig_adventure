@@ -1,7 +1,6 @@
 package fx_dig_adventure
 
 import (
-	"os"
 	"testing"
 
 	"go.uber.org/dig"
@@ -81,5 +80,4 @@ func TestGroup2(t *testing.T) {
 	if err := container.Invoke(Info); err != nil {
 		t.Fatal(err)
 	}
-	dig.Visualize(container, os.Stdout)
 }
