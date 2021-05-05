@@ -1,6 +1,8 @@
-package fx_dig_adventure
+package dig_test
 
 import (
+	"bytes"
+	"fmt"
 	"log"
 	"os"
 	"testing"
@@ -8,13 +10,13 @@ import (
 	"go.uber.org/dig"
 )
 
-func TestDryRun1(t *testing.T) {
-	// Dry Run
-	c := dig.New(dig.DryRun(true))
-
+func TestSimple1(t *testing.T) {
 	type Config struct {
 		Prefix string
 	}
+
+	c := dig.New()
+
 	err := c.Provide(func() (*Config, error) {
 		return &Config{Prefix: "[foo] "}, nil
 	})
@@ -33,4 +35,9 @@ func TestDryRun1(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
+	b := &bytes.Buffer{}
+	if err := dig.Visualize(c, b); err != nil {
+		panic(err)
+	}
+	fmt.Println(b.String())
 }

@@ -1,4 +1,4 @@
-package fx_dig_adventure
+package dig_test
 
 import (
 	"testing"
