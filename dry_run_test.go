@@ -8,13 +8,13 @@ import (
 	"go.uber.org/dig"
 )
 
-func TestSimple1(t *testing.T) {
+func TestDryRun1(t *testing.T) {
+	// Dry Run
+	c := dig.New(dig.DryRun(true))
+
 	type Config struct {
 		Prefix string
 	}
-
-	c := dig.New()
-
 	err := c.Provide(func() (*Config, error) {
 		return &Config{Prefix: "[foo] "}, nil
 	})
