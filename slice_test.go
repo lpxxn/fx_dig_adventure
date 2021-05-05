@@ -32,7 +32,6 @@ func TestSlice1(t *testing.T) {
 		for _, u := range params.StudentList {
 			t.Log(u.Name, u.Age)
 		}
-
 		return nil
 	}
 	if err := container.Invoke(Info); err != nil {
