@@ -6,7 +6,7 @@ import (
 	"go.uber.org/dig"
 )
 
-func TestSlice1(t *testing.T) {
+func TestGroup1(t *testing.T) {
 	type Student struct {
 		Name string
 		Age  int
