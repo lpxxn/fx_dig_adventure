@@ -168,11 +168,11 @@ func TestName4(t *testing.T) {
 		},
 	}), fx.Provide(fx.Annotated{
 		Name: "str2",
-		Target: func(db DBInfo) string {
-			t.Log(db.PrimaryDSN)
-			t.Log(db.SecondaryDSN)
+		Target: func() string {
 			return "bbb"
 		},
+	}), fx.Invoke(func(s StrInfo) {
+		t.Log(s.Str1, "   ", s.Str2)
 	}), fx.Invoke(func(s StrInfo) {
 		t.Log(s.Str1, "   ", s.Str2)
 	}))
